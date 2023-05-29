@@ -1,0 +1,1 @@
+python3 main_BSVRB.py --method 'BSVRBv1' --dataset 'a8a' --data_batch_size 32 --total_epoch 200 --eva_per 1000 --eta 0.001 --alpha 0.9 --tau 1 --beta 0.9 --lamb 0.00001 --H_proj True --H_bound 10 --auto_gamma 0 --gamma 1 --data_noise True --noise_perc 0.1 --imb True --imb_rate 0.3
