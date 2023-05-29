@@ -1,6 +1,6 @@
 ### Introduction
 
-The folder contains the code and scripts to reproduce the Hyperparameter Optimization experimental results in the manuscript. We implement our proposed algorithms BSVRBv1 and BSVRBv2, and the baseline algorithm RSVRB from existing work.
+This folder contains the code and scripts to reproduce the Hyperparameter Optimization experimental results in the manuscript. We implement our proposed algorithms BSVRBv1 and BSVRBv2, and the baseline algorithm RSVRB from existing work.
 
 
 ### Datasets
