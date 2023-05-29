@@ -1,0 +1,1 @@
+python3 main.py --method 'BSVRBv2' --dataset 'a8a' --task_num 100 --data_batch_size 32 --task_batch_size 10 --total_epoch 200 --eta 0.001 --tau 1 --tau_v 1 --beta 0.9 --lamb 0.00001 --gamma 1 --H_bound 10 --results_path '.../'
