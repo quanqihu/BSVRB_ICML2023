@@ -1,0 +1,197 @@
+Namespace(model_name='NeuMF')
+--------------------------------------------- BEGIN: 2023-01-10 09:19:55 ---------------------------------------------
+
+=========================================================
+ Arguments        | Values                               
+=========================================================
+ batch_size       | 256                                 
+ beta_s           | 0.005                               
+ beta_u           | 0.1                                 
+ beta_v           | 0.005                               
+ beta_z           | 0.005                               
+ clip_value       | 0.0                                 
+ dataset          | netflix                             
+ dropout          | 0.2                                 
+ early_stop       | -1                                  
+ emb_size         | 64                                  
+ epoch            | 120                                 
+ eta1             | 0.3                                 
+ eval_batch_size  | 512                                 
+ fix_embedding    | 0                                   
+ gamma_m          | 0.01                                
+ gamma_s          | 0.9                                 
+ gamma_u          | 0.3                                 
+ gamma_v          | 0.9                                 
+ gamma_z          | 0.9                                 
+ gpu              | 2                                   
+ init_last        | 1                                   
+ l2               | 1e-07                               
+ layers           | [64]                                
+ load             | 1                                   
+ loss_type        | BSVRB                               
+ lr               | 0.0004                              
+ ndcg_gamma       | 0.3                                 
+ ndcg_topk        | 300                                 
+ neuralndcg_temp  | 1.0                                 
+ num_neg          | 300                                 
+ num_pos          | 10                                  
+ num_workers      | 8                                   
+ optimizer        | Adam                                
+ pretrain_model   | ../model/NeuMF/netflix_pretrained.pt
+ random_seed      | 0                                   
+ reorg_train_data | 1                                   
+ run_name         | netflix_BSVRB_fndcg_base            
+ schedule         | [60]                                
+ test_all         | 0                                   
+ topk             | 5,10,20,50                          
+ warmup_gamma     | 0.1                                 
+=========================================================
+GPU available: True
+Load corpus from ../data/netflix/BaseReader.pkl
+#params: 32506176
+NeuMF(
+  (mf_u_embeddings): Embedding(236118, 64)
+  (mf_i_embeddings): Embedding(17771, 64)
+  (mlp_u_embeddings): Embedding(236118, 64)
+  (mlp_i_embeddings): Embedding(17771, 64)
+  (mlp): ModuleList(
+    (0): Linear(in_features=128, out_features=64, bias=True)
+  )
+  (dropout_layer): Dropout(p=0.2)
+  (prediction): Linear(in_features=128, out_features=1, bias=False)
+  (BSVRB_loss): BSVRB_NDCG_Loss()
+)
+current topk: 300
+train_max_pos_items: 17633
+dev_pos_items: 10
+test_pos_items: 10
+Load model from ../model/NeuMF/netflix_pretrained.pt
+Reinitialize the last layer.
+Optimizer: Adam
+Epoch 1     loss=0.5036 [318.1 s]    dev=(NDCG@5:0.2145) [62.9 s] *
+Epoch 2     loss=0.6972 [292.9 s]    dev=(NDCG@5:0.2251) [90.2 s] *
+Epoch 3     loss=0.5210 [285.3 s]    dev=(NDCG@5:0.2439) [93.5 s] *
+Epoch 4     loss=0.5198 [279.3 s]    dev=(NDCG@5:0.2633) [106.7 s] *
+Epoch 5     loss=0.5190 [278.2 s]    dev=(NDCG@5:0.2770) [105.9 s] *
+Epoch 6     loss=0.5159 [285.2 s]    dev=(NDCG@5:0.2872) [113.1 s] *
+Epoch 7     loss=0.5117 [272.4 s]    dev=(NDCG@5:0.2928) [111.1 s] *
+Epoch 8     loss=0.5046 [277.6 s]    dev=(NDCG@5:0.2968) [117.8 s] *
+Epoch 9     loss=0.4974 [267.1 s]    dev=(NDCG@5:0.2977) [117.7 s] *
+Epoch 10    loss=0.4900 [262.4 s]    dev=(NDCG@5:0.2987) [123.2 s] *
+Epoch 11    loss=0.4826 [269.3 s]    dev=(NDCG@5:0.3003) [129.9 s] *
+Epoch 12    loss=0.4753 [273.1 s]    dev=(NDCG@5:0.3009) [119.4 s] *
+Epoch 13    loss=0.4674 [291.1 s]    dev=(NDCG@5:0.3016) [119.8 s] *
+Epoch 14    loss=0.4603 [280.0 s]    dev=(NDCG@5:0.3014) [121.2 s]
+Epoch 15    loss=0.4545 [277.2 s]    dev=(NDCG@5:0.3018) [119.0 s] *
+Epoch 16    loss=0.4471 [296.6 s]    dev=(NDCG@5:0.3023) [118.1 s] *
+Epoch 17    loss=0.4416 [288.7 s]    dev=(NDCG@5:0.3020) [112.0 s]
+Epoch 18    loss=0.4346 [293.7 s]    dev=(NDCG@5:0.3028) [110.1 s] *
+Epoch 19    loss=0.4295 [295.2 s]    dev=(NDCG@5:0.3028) [108.4 s] *
+Epoch 20    loss=0.4241 [295.5 s]    dev=(NDCG@5:0.3027) [110.5 s]
+Epoch 21    loss=0.4080 [292.6 s]    dev=(NDCG@5:0.3035) [107.5 s] *
+Epoch 22    loss=0.4024 [293.5 s]    dev=(NDCG@5:0.3055) [103.0 s] *
+Epoch 23    loss=0.3966 [307.1 s]    dev=(NDCG@5:0.3064) [100.7 s] *
+Epoch 24    loss=0.3918 [308.4 s]    dev=(NDCG@5:0.3075) [103.7 s] *
+Epoch 25    loss=0.3863 [299.7 s]    dev=(NDCG@5:0.3074) [98.7 s]
+Epoch 26    loss=0.3813 [303.8 s]    dev=(NDCG@5:0.3077) [103.7 s] *
+Epoch 27    loss=0.3770 [312.9 s]    dev=(NDCG@5:0.3082) [102.6 s] *
+Epoch 28    loss=0.3724 [300.4 s]    dev=(NDCG@5:0.3095) [103.1 s] *
+Epoch 29    loss=0.3676 [305.5 s]    dev=(NDCG@5:0.3095) [94.3 s] *
+Epoch 30    loss=0.3635 [304.0 s]    dev=(NDCG@5:0.3103) [98.5 s] *
+Epoch 31    loss=0.3590 [304.5 s]    dev=(NDCG@5:0.3100) [102.1 s]
+Epoch 32    loss=0.3549 [297.4 s]    dev=(NDCG@5:0.3109) [106.7 s] *
+Epoch 33    loss=0.3505 [301.3 s]    dev=(NDCG@5:0.3116) [110.9 s] *
+Epoch 34    loss=0.3469 [306.8 s]    dev=(NDCG@5:0.3118) [108.2 s] *
+Epoch 35    loss=0.3432 [304.5 s]    dev=(NDCG@5:0.3122) [108.9 s] *
+Epoch 36    loss=0.3390 [316.5 s]    dev=(NDCG@5:0.3128) [99.6 s] *
+Epoch 37    loss=0.3359 [316.9 s]    dev=(NDCG@5:0.3130) [96.7 s] *
+Epoch 38    loss=0.3323 [315.3 s]    dev=(NDCG@5:0.3130) [98.4 s]
+Epoch 39    loss=0.3295 [323.0 s]    dev=(NDCG@5:0.3139) [98.3 s] *
+Epoch 40    loss=0.3247 [314.7 s]    dev=(NDCG@5:0.3135) [99.6 s]
+Epoch 41    loss=0.3226 [313.1 s]    dev=(NDCG@5:0.3141) [96.9 s] *
+Epoch 42    loss=0.3190 [307.1 s]    dev=(NDCG@5:0.3145) [93.5 s] *
+Epoch 43    loss=0.3161 [304.8 s]    dev=(NDCG@5:0.3154) [89.3 s] *
+Epoch 44    loss=0.3136 [311.2 s]    dev=(NDCG@5:0.3153) [89.7 s]
+Epoch 45    loss=0.3097 [312.4 s]    dev=(NDCG@5:0.3160) [85.4 s] *
+Epoch 46    loss=0.3071 [317.1 s]    dev=(NDCG@5:0.3160) [82.3 s] *
+Epoch 47    loss=0.3041 [324.9 s]    dev=(NDCG@5:0.3158) [80.9 s]
+Epoch 48    loss=0.3012 [323.5 s]    dev=(NDCG@5:0.3165) [74.5 s] *
+Epoch 49    loss=0.2985 [318.7 s]    dev=(NDCG@5:0.3171) [84.0 s] *
+Epoch 50    loss=0.2960 [317.9 s]    dev=(NDCG@5:0.3173) [76.8 s] *
+Epoch 51    loss=0.2930 [325.1 s]    dev=(NDCG@5:0.3176) [77.7 s] *
+Epoch 52    loss=0.2907 [303.2 s]    dev=(NDCG@5:0.3170) [80.5 s]
+Epoch 53    loss=0.2885 [312.8 s]    dev=(NDCG@5:0.3177) [75.2 s] *
+Epoch 54    loss=0.2860 [314.3 s]    dev=(NDCG@5:0.3179) [70.8 s] *
+Epoch 55    loss=0.2839 [310.1 s]    dev=(NDCG@5:0.3179) [74.7 s] *
+Epoch 56    loss=0.2807 [310.6 s]    dev=(NDCG@5:0.3182) [74.6 s] *
+Epoch 57    loss=0.2793 [307.8 s]    dev=(NDCG@5:0.3174) [82.9 s]
+Epoch 58    loss=0.2769 [304.8 s]    dev=(NDCG@5:0.3183) [81.2 s] *
+Epoch 59    loss=0.2742 [302.5 s]    dev=(NDCG@5:0.3183) [91.1 s]
+Epoch 60    loss=0.2722 [297.8 s]    dev=(NDCG@5:0.3189) [96.1 s] *
+Epoch 61    loss=0.2699 [305.9 s]    dev=(NDCG@5:0.3196) [86.4 s] *
+Epoch 62    loss=0.2683 [293.8 s]    dev=(NDCG@5:0.3199) [92.0 s] *
+Epoch 63    loss=0.2667 [282.6 s]    dev=(NDCG@5:0.3206) [111.2 s] *
+Epoch 64    loss=0.2643 [292.1 s]    dev=(NDCG@5:0.3208) [103.8 s] *
+Epoch 65    loss=0.2624 [296.3 s]    dev=(NDCG@5:0.3214) [101.1 s] *
+Epoch 66    loss=0.2610 [297.1 s]    dev=(NDCG@5:0.3214) [96.4 s] *
+Epoch 67    loss=0.2587 [302.3 s]    dev=(NDCG@5:0.3217) [95.6 s] *
+Epoch 68    loss=0.2565 [302.2 s]    dev=(NDCG@5:0.3223) [93.7 s] *
+Epoch 69    loss=0.2542 [300.0 s]    dev=(NDCG@5:0.3225) [99.5 s] *
+Epoch 70    loss=0.2538 [296.6 s]    dev=(NDCG@5:0.3227) [100.8 s] *
+Epoch 71    loss=0.2510 [285.6 s]    dev=(NDCG@5:0.3228) [112.1 s] *
+Epoch 72    loss=0.2491 [293.5 s]    dev=(NDCG@5:0.3229) [100.5 s] *
+Epoch 73    loss=0.2478 [288.8 s]    dev=(NDCG@5:0.3233) [102.0 s] *
+Epoch 74    loss=0.2464 [285.7 s]    dev=(NDCG@5:0.3234) [101.2 s] *
+Epoch 75    loss=0.2443 [281.1 s]    dev=(NDCG@5:0.3237) [107.8 s] *
+Epoch 76    loss=0.2429 [271.5 s]    dev=(NDCG@5:0.3237) [122.0 s]
+Epoch 77    loss=0.2412 [266.3 s]    dev=(NDCG@5:0.3242) [121.1 s] *
+Epoch 78    loss=0.2400 [264.7 s]    dev=(NDCG@5:0.3244) [121.7 s] *
+Epoch 79    loss=0.2386 [267.0 s]    dev=(NDCG@5:0.3243) [122.1 s]
+Epoch 80    loss=0.2363 [279.3 s]    dev=(NDCG@5:0.3245) [125.9 s] *
+Epoch 81    loss=0.2360 [288.5 s]    dev=(NDCG@5:0.3247) [117.6 s] *
+Epoch 82    loss=0.2341 [282.0 s]    dev=(NDCG@5:0.3252) [113.9 s] *
+Epoch 83    loss=0.2328 [278.7 s]    dev=(NDCG@5:0.3253) [110.1 s] *
+Epoch 84    loss=0.2313 [287.1 s]    dev=(NDCG@5:0.3252) [111.7 s]
+Epoch 85    loss=0.2304 [295.2 s]    dev=(NDCG@5:0.3258) [111.9 s] *
+Epoch 86    loss=0.2284 [299.3 s]    dev=(NDCG@5:0.3259) [101.7 s] *
+Epoch 87    loss=0.2273 [289.4 s]    dev=(NDCG@5:0.3258) [109.1 s]
+Epoch 88    loss=0.2259 [303.0 s]    dev=(NDCG@5:0.3260) [100.2 s] *
+Epoch 89    loss=0.2248 [294.3 s]    dev=(NDCG@5:0.3258) [104.3 s]
+Epoch 90    loss=0.2239 [298.1 s]    dev=(NDCG@5:0.3262) [94.5 s] *
+Epoch 91    loss=0.2223 [306.0 s]    dev=(NDCG@5:0.3263) [90.7 s] *
+Epoch 92    loss=0.2212 [304.3 s]    dev=(NDCG@5:0.3263) [94.3 s]
+Epoch 93    loss=0.2200 [305.5 s]    dev=(NDCG@5:0.3265) [92.2 s] *
+Epoch 94    loss=0.2189 [305.4 s]    dev=(NDCG@5:0.3267) [97.6 s] *
+Epoch 95    loss=0.2177 [291.7 s]    dev=(NDCG@5:0.3269) [108.7 s] *
+Epoch 96    loss=0.2165 [291.8 s]    dev=(NDCG@5:0.3272) [108.3 s] *
+Epoch 97    loss=0.2160 [284.8 s]    dev=(NDCG@5:0.3271) [108.5 s]
+Epoch 98    loss=0.2143 [280.9 s]    dev=(NDCG@5:0.3270) [112.7 s]
+Epoch 99    loss=0.2132 [278.1 s]    dev=(NDCG@5:0.3269) [119.0 s]
+Epoch 100   loss=0.2123 [278.5 s]    dev=(NDCG@5:0.3270) [123.0 s]
+Epoch 101   loss=0.2111 [274.7 s]    dev=(NDCG@5:0.3272) [120.5 s] *
+Epoch 102   loss=0.2098 [281.2 s]    dev=(NDCG@5:0.3273) [120.6 s] *
+Epoch 103   loss=0.2088 [279.7 s]    dev=(NDCG@5:0.3274) [114.9 s] *
+Epoch 104   loss=0.2081 [286.6 s]    dev=(NDCG@5:0.3275) [115.0 s] *
+Epoch 105   loss=0.2071 [273.3 s]    dev=(NDCG@5:0.3279) [115.3 s] *
+Epoch 106   loss=0.2059 [283.6 s]    dev=(NDCG@5:0.3279) [116.1 s]
+Epoch 107   loss=0.2050 [271.8 s]    dev=(NDCG@5:0.3276) [119.8 s]
+Epoch 108   loss=0.2044 [284.6 s]    dev=(NDCG@5:0.3280) [120.6 s] *
+Epoch 109   loss=0.2034 [276.5 s]    dev=(NDCG@5:0.3281) [121.0 s] *
+Epoch 110   loss=0.2021 [285.7 s]    dev=(NDCG@5:0.3282) [118.6 s] *
+Epoch 111   loss=0.2012 [290.1 s]    dev=(NDCG@5:0.3286) [114.0 s] *
+Epoch 112   loss=0.2000 [286.0 s]    dev=(NDCG@5:0.3284) [114.6 s]
+Epoch 113   loss=0.1998 [277.7 s]    dev=(NDCG@5:0.3285) [112.7 s]
+Epoch 114   loss=0.1986 [281.5 s]    dev=(NDCG@5:0.3286) [111.4 s]
+Epoch 115   loss=0.1975 [275.3 s]    dev=(NDCG@5:0.3283) [113.0 s]
+Epoch 116   loss=0.1966 [265.6 s]    dev=(NDCG@5:0.3281) [116.4 s]
+Epoch 117   loss=0.1957 [276.4 s]    dev=(NDCG@5:0.3285) [117.1 s]
+Epoch 118   loss=0.1956 [286.2 s]    dev=(NDCG@5:0.3285) [121.4 s]
+Epoch 119   loss=0.1940 [259.4 s]    dev=(NDCG@5:0.3287) [126.4 s] *
+Epoch 120   loss=0.1934 [273.3 s]    dev=(NDCG@5:0.3288) [122.3 s] *
+
+Best Iter(dev)=  120	 dev=(NDCG@5:0.3288) [47765.9 s] 
+Load model from ../model/NeuMF/NeuMF__netflix__0__netflix_BSVRB_fndcg_base__lr=0.0004__l2=1e-07__batch_size=256__num_pos=10__num_neg=300__loss_type=BSVRB__emb_size=64__layers=[64]__Tue-Jan-10-09:19:55-2023.pt
+
+Test After Training: (NDCG@5:0.2778,NDCG@10:0.2993,NDCG@20:0.3747,NDCG@50:0.4591)
+
+--------------------------------------------- END: 2023-01-10 22:41:26 ---------------------------------------------
